@@ -1,0 +1,10 @@
+serial,name,value,notes
+LGR002,CC_depth_of_conductivity_and_temperature_measurements_m,1.1176,
+LGR002,CC_height_of_air_humidity_measurement_m,4.2926,
+LGR002,CC_height_of_air_temperature_measurement_m,4.2926,
+LGR002,CC_height_of_windspeed_sensor_above_sealevel_m,4.7498,
+LGR002,CC_jcool,1,
+LGR002,CC_jwarm,1,
+LGR002,CC_lat,40.1367833333333,
+LGR002,CC_lon,-70.7697833333333,
+LGR002,CC_zinvpbl,600,

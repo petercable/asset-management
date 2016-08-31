@@ -1,0 +1,5 @@
+serial,name,value,notes
+209,CC_conc_coef,"[[0, 1]]","2D  vector required by DPA; (1st cal, so default values for offset: 0 and slope: 1)"
+209,CC_csv,"[0.00316987, 0.000134481, 2.55659e-06, 231.204, -0.373966, -58.4033, 4.54673]","Requires TEMPWAT, PRESWAT and PRACSAL from CE06ISSP-SP001-09-CTDPFJ000"
+209,CC_lat,44.6391,Latitude
+209,CC_lon,-124.300433333333,Longitude

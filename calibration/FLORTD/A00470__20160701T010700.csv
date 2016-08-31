@@ -1,0 +1,11 @@
+serial,name,value,notes
+1116,CC_angular_resolution,1.076,Constant
+1116,CC_dark_counts_cdom,46,
+1116,CC_dark_counts_chlorophyll_a,49,
+1116,CC_dark_counts_volume_scatter,49,Requires TEMPWAT and PRACSAL (PD2927/2929) from a nearby CTD
+1116,CC_depolarization_ratio,0.039,Constant
+1116,CC_measurement_wavelength,700,Constant
+1116,CC_scale_factor_cdom,0.0902,
+1116,CC_scale_factor_chlorophyll_a,0.0118,
+1116,CC_scale_factor_volume_scatter,1.816e-06,Depth
+1116,CC_scattering_angle,124,Constant

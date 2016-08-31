@@ -1,0 +1,25 @@
+serial,name,value,notes
+16-50001,CC_a0,0.001251523,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_a1,0.0002750386,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_a2,-1.055218e-06,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_a3,1.775094e-07,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_cpcor,-9.57e-08,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ctcor,3.25e-06,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_g,-0.9847879,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_h,0.1370732,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_i,-0.0002079871,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_j,3.337904e-05,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_lat,59.9337333333333,Very similar to CP01CNSM
+16-50001,CC_lon,-39.4738333333333,Seabird SBE 16plusV2
+16-50001,CC_pa0,0.002898213,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_pa1,0.0004889357,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_pa2,-1.079218e-11,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptca0,525353.2,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptca1,4.123545,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptca2,-0.1812588,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptcb0,25.13313,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptcb1,2.5e-05,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptcb2,0,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptempa0,-59.32189,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptempa1,54.50369,From vendor cal sheet: Seabird SBE 16plusV2
+16-50001,CC_ptempa2,-0.5221239,From vendor cal sheet: Seabird SBE 16plusV2

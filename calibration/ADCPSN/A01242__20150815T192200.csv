@@ -1,0 +1,8 @@
+serial,name,value,notes
+22865,CC_depth,500000,In mm  (500 m depth)
+22865,CC_latitude,59.9435833,
+22865,CC_longitude,-39.57371667,
+22865,CC_scale_factor1,0.45,
+22865,CC_scale_factor2,0.45,
+22865,CC_scale_factor3,0.45,
+22865,CC_scale_factor4,0.45,

@@ -1,0 +1,4 @@
+serial,name,value,notes
+240,CC_immersion_factor,"[1.368, 1.41, 1.365, 1.354, 1.372, 1.322, 1.347]",calibration coefficient supplied by the manufacturer.
+240,CC_offset,"[2147342344.1, 2147551191.2, 2147894868.6, 2147815048.9, 2147413031.2, 2147395373.6, 2147501782.1]",calibration coefficient supplied by the manufacturer.
+240,CC_scale,"[2.15380384953e-07, 1.91392245892e-07, 2.18797154717e-07, 2.05567950749e-07, 2.02242727609e-07, 2.08025027225e-07, 2.0602243695e-07]",calibration coefficient supplied by the manufacturer.

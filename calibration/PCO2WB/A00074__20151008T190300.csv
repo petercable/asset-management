@@ -1,0 +1,9 @@
+serial,name,value,notes
+C0053,CC_cala,0.0512,
+C0053,CC_calb,0.6294,
+C0053,CC_calc,-1.592,
+C0053,CC_calt,14.8988,
+C0053,CC_ea434,19706,ea and eb coeffs are ...
+C0053,CC_ea620,34,... reagent bag specific.
+C0053,CC_eb434,3073,
+C0053,CC_eb620,44327,

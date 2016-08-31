@@ -1,0 +1,10 @@
+serial,name,value,notes
+CP04OSSM-00002-METBK,CC_depth_of_conductivity_and_temperature_measurements_m,1.0668,
+CP04OSSM-00002-METBK,CC_height_of_air_humidity_measurement_m,4.2926,
+CP04OSSM-00002-METBK,CC_height_of_air_temperature_measurement_m,4.2926,
+CP04OSSM-00002-METBK,CC_height_of_windspeed_sensor_above_sealevel_m,4.7498,
+CP04OSSM-00002-METBK,CC_jcool,1,Constant
+CP04OSSM-00002-METBK,CC_jwarm,1,Constant
+CP04OSSM-00002-METBK,CC_lat,39.9406333333333,
+CP04OSSM-00002-METBK,CC_lon,-70.87855,
+CP04OSSM-00002-METBK,CC_zinvpbl,600,Constant

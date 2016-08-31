@@ -1,0 +1,9 @@
+serial,name,value,notes
+43-2498,CC_frequency_offset,-871.61,
+43-2498,CC_latitude,46.8520683333333,
+43-2498,CC_longitude,-124.966003333333,
+43-2498,CC_oxygen_signal_slope,0.00032804,use adjusted Soc
+43-2498,CC_residual_temperature_correction_factor_a,-0.0038576,
+43-2498,CC_residual_temperature_correction_factor_b,0.00013796,
+43-2498,CC_residual_temperature_correction_factor_c,-2.2318e-06,
+43-2498,CC_residual_temperature_correction_factor_e,0.036,

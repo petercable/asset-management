@@ -1,0 +1,5 @@
+serial,name,value,notes
+211,CC_csv,"[0.00315218, 0.000133734, 2.61979e-06, 230.297, -0.343226, -58.5185, 4.55436]",Stern-Volmer-Uchida Calibration Coefficients array. 7 element float array.
+211,CC_ct_depth,1,"Value in dBar, using deplth in Meters"
+211,CC_lat,59.9337333333333,Instrument's deployment latitude [decimal degrees]
+211,CC_lon,-39.4738333333333,Instrument's deployment longitude [decimal degrees]

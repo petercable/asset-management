@@ -1,0 +1,7 @@
+serial,name,value,notes
+211,CC_conc_coef,"[0.0, 1.0]",
+211,CC_csv,"[0.00302289, 0.000127088, 2.48492e-06, 232.372, -0.326829, -57.7879, 4.53361]",
+211,CC_ct_depth,1,
+211,CC_lat,59.9341,"On Buoy bottom
+Use CTD data from GI01SUMO-SBD11-06-METBKA000 or GI01SUMO-SBD12-06-METBKA000."
+211,CC_lon,-39.4673,

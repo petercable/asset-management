@@ -1,0 +1,3 @@
+serial,name,value,notes
+2197,CC_lat,-42.9808333333333,"Needs PRESWAT, TEMPWAT, and PRACSAL from nearest CTD"
+2197,CC_lon,-42.5419166666667,

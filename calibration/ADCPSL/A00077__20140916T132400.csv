@@ -1,0 +1,10 @@
+serial,name,value,notes
+18353,CC_depth,500000,Units in mm
+18353,CC_lat,59.7128333333333,Depth
+18353,CC_latitude,59.7128333333333,
+18353,CC_lon,-39.3203333333333,
+18353,CC_longitude,-39.3203333333333,
+18353,CC_scale_factor1,0.45,
+18353,CC_scale_factor2,0.45,
+18353,CC_scale_factor3,0.45,
+18353,CC_scale_factor4,0.45,

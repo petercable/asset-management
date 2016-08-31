@@ -1,0 +1,19 @@
+serial,name,value,notes
+26-1391,CC_b,8388.6,
+26-1391,CC_c1,599.7413,IDD for data recovered directly from
+26-1391,CC_c2,10.06003,the PRESF instrument needs to be written
+26-1391,CC_c3,-1105.32,
+26-1391,CC_d1,0.029624,
+26-1391,CC_d2,0,
+26-1391,CC_m,125829.1,
+26-1391,CC_offset_correction_factor,0,Constant
+26-1391,CC_pressure_offset_calibration_coefficient,-0.173,from SBE offset_correction pdf
+26-1391,CC_slope_correction_factor,1,Constant
+26-1391,CC_t1,27.80895,
+26-1391,CC_t2,0.493062,
+26-1391,CC_t3,19.84326,
+26-1391,CC_t4,41.17356,
+26-1391,CC_u0,5.793599,
+26-1391,CC_y1,-3983.797,
+26-1391,CC_y2,-9856.866,
+26-1391,CC_y3,0,

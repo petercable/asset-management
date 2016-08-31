@@ -1,0 +1,3 @@
+serial,name,value,notes
+AQD 8544,CC_lat,59.9337333333333,Instrument's deployment latitude [decimal degrees]
+AQD 8544,CC_lon,-39.4738333333333,Instrument's deployment longitude [decimal degrees]

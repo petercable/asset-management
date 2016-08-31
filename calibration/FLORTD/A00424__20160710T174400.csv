@@ -1,0 +1,12 @@
+serial,name,value,notes
+1106,CC_angular_resolution,1.076,Constant
+1106,CC_dark_counts_cdom,42,
+1106,CC_dark_counts_chlorophyll_a,50,
+1106,CC_dark_counts_volume_scatter,37,"On NSIF
+Use CTD data from GI01SUMO-RID16-03-CTDBPF000."
+1106,CC_depolarization_ratio,0.039,Constant
+1106,CC_measurement_wavelength,700,Constant
+1106,CC_scale_factor_cdom,0.0739,
+1106,CC_scale_factor_chlorophyll_a,0.0116,
+1106,CC_scale_factor_volume_scatter,1.745e-06,
+1106,CC_scattering_angle,124,Constant

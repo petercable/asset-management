@@ -1,0 +1,8 @@
+serial,name,value,notes
+21639,CC_depth,500000,Units in mm
+21639,CC_latitude,-42.9227566666667,
+21639,CC_longitude,-42.4559283333333,
+21639,CC_scale_factor1,0.45,
+21639,CC_scale_factor2,0.45,
+21639,CC_scale_factor3,0.45,
+21639,CC_scale_factor4,0.45,

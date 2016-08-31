@@ -1,0 +1,3 @@
+serial,name,value,notes
+CP01CNSM-00003-WAVSS,CC_lat,40.1402166666667,This is a bogus serial number; Instrument's deployment latitude [decimal degrees]   S/N to be determined following recovery
+CP01CNSM-00003-WAVSS,CC_lon,-70.7712833333333,Instrument's deployment longitude [decimal degrees]

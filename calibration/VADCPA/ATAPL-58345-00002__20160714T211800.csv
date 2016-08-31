@@ -1,0 +1,7 @@
+serial,name,value,notes
+19075,CC_lat,45.8305,doesn't appear to have changed since last calibration
+19075,CC_lon,-129.7535,
+19075,CC_scale_factor1,0.45,
+19075,CC_scale_factor2,0.45,
+19075,CC_scale_factor3,0.45,
+19075,CC_scale_factor4,0.45,

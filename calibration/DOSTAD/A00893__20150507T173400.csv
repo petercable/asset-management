@@ -1,0 +1,5 @@
+serial,name,value,notes
+387,CC_csv,"[0.00280115, 0.000119425, 2.40081e-06, 229.558, -0.330003, -58.8802, 4.5446]",Stern-Volmer-Uchida Calibration Coefficients array. 7 element float array.
+387,CC_ct_depth,5,PD3681
+387,CC_lat,40.1402166666667,Instrument's deployment latitude [decimal degrees]
+387,CC_lon,-70.7712833333333,Instrument's deployment longitude [decimal degrees]

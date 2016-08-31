@@ -1,0 +1,7 @@
+serial,name,value,notes
+212,CC_conc_coef,"[0.0, 1.0]",
+212,CC_csv,"[0.00293217, 0.000124707, 2.35507e-06, 233.3961, -0.334716, -53.4414, 4.55788]",
+212,CC_ct_depth,12,
+212,CC_lat,59.9341,"On NSIF
+Use CTD data from GI01SUMO-RID16-03-CTDBPF000."
+212,CC_lon,-39.4673,

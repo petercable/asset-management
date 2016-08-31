@@ -1,0 +1,8 @@
+serial,name,value,notes
+21522,CC_depth,29000,[mm]; NOT NEEDED FOR ENDURANCE
+21522,CC_lat,47.134976,
+21522,CC_lon,-124.273154,
+21522,CC_scale_factor1,0.45,
+21522,CC_scale_factor2,0.45,
+21522,CC_scale_factor3,0.45,
+21522,CC_scale_factor4,0.45,

@@ -1,0 +1,4 @@
+serial,name,value,notes
+350,CC_csv,"[0.00276548, 0.000116845, 2.40011e-06, 229.829, -0.339544, -57.6337, 4.55343]","Requires TEMPWAT, PRESWAT and PRACSAL from CP03ISSP-SP001-09-CTDPFJ000"
+350,CC_lat,40.36476667,Latitude
+350,CC_lon,-70.8883,Longitude

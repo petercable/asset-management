@@ -1,0 +1,6 @@
+serial,name,value,notes
+415,CC_csv,"[0.00284623, 0.000120641, 2.41896e-06, 229.589, -0.351184, -56.3801, 4.57234]",
+415,CC_ct_depth,40,
+415,CC_lat,59.9435833,"On wire rope
+Use CTD data from GI01SUMO-RII11-02-CTDBPP003 "
+415,CC_lon,-39.57371667,

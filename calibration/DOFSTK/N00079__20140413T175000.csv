@@ -1,0 +1,9 @@
+serial,name,value,notes
+43-2708,CC_frequency_offset,-799.39,
+43-2708,CC_latitude,40.0960533333333,
+43-2708,CC_longitude,-70.8797183333333,
+43-2708,CC_oxygen_signal_slope,0.00036897,
+43-2708,CC_residual_temperature_correction_factor_a,-0.0037781,
+43-2708,CC_residual_temperature_correction_factor_b,0.00017989,
+43-2708,CC_residual_temperature_correction_factor_c,-3.0849e-06,
+43-2708,CC_residual_temperature_correction_factor_e,0.036,

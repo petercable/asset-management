@@ -1,0 +1,8 @@
+serial,name,value,notes
+P0069,CC_ea434,17533,"mCP molar absorptivities provided by vendor, specific to a reagent bag with a defined shelflife."
+P0069,CC_ea578,101,"mCP molar absorptivities provided by vendor, specific to a reagent bag with a defined shelflife."
+P0069,CC_eb434,2229,"mCP molar absorptivities provided by vendor, specific to a reagent bag with a defined shelflife."
+P0069,CC_eb578,38502,"mCP molar absorptivities provided by vendor, specific to a reagent bag with a defined shelflife."
+P0069,CC_ind_off,0,indicator impurity offset correction factor [unitless]
+P0069,CC_ind_slp,1,indicator impurity slope correction factor [unitless]
+P0069,CC_psal,35,"Constant value defined in: def ph_calc_phwater(ref, light, therm, ea434, eb434, ea578, eb578, ind_slp, ind_off, psal=35.0)"

@@ -1,0 +1,5 @@
+serial,name,value,notes
+2,CC_gain,4,
+2,CC_offset,2004,
+2,CC_tc_slope,4.22e-05,Has this changed from two years ago?
+2,CC_ts_slope,0.003,

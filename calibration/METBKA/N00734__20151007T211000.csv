@@ -1,0 +1,10 @@
+serial,name,value,notes
+LGR008,CC_depth_of_conductivity_and_temperature_measurements_m,1.5,[m]
+LGR008,CC_height_of_air_humidity_measurement_m,3.63,[m]
+LGR008,CC_height_of_air_temperature_measurement_m,3.63,[m]
+LGR008,CC_height_of_windspeed_sensor_above_sealevel_m,4.19,[m]
+LGR008,CC_jcool,1,Constant
+LGR008,CC_jwarm,1,Constant
+LGR008,CC_lat,44.635377,S/N from CE07_0001 (cross decked to CE02 after recovery of CE07
+LGR008,CC_lon,-124.30252,
+LGR008,CC_zinvpbl,600,Constant

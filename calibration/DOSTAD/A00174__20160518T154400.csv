@@ -1,0 +1,5 @@
+serial,name,value,notes
+136,CC_conc_coef,"[0.0, 1.0]","new multipoint cal, so default values for offset and slope"
+136,CC_csv,"[0.003323794, 0.0001403994, 2.474775e-06, 232.1576, -0.4021301, -60.5579, 4.51971]",
+136,CC_lat,44.658276,
+136,CC_lon,-124.095248,

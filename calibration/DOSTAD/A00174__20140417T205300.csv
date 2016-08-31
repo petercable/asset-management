@@ -1,0 +1,5 @@
+serial,name,value,notes
+136,CC_csv,"[0.00271068, 0.0001122548, 2.269757e-06, 233.6689, -0.3111057, -54.5185, 4.538447]",
+136,CC_ct_depth,5,The value 5 is just a guess until we can get better information
+136,CC_lat,44.6583333333333,
+136,CC_lon,-124.09565,

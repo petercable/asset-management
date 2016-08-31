@@ -1,0 +1,10 @@
+serial,name,value,notes
+20502,CC_depth,500000,Units in mm
+20502,CC_lat,49.9775,Depth
+20502,CC_latitude,49.9775,
+20502,CC_lon,-144.245666666667,
+20502,CC_longitude,-144.245666666667,
+20502,CC_scale_factor1,0.45,
+20502,CC_scale_factor2,0.45,
+20502,CC_scale_factor3,0.45,
+20502,CC_scale_factor4,0.45,

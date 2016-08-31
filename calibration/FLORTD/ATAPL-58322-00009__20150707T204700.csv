@@ -1,0 +1,11 @@
+serial,name,value,notes
+1292,CC_angular_resolution,1.076,Don't know where these come from
+1292,CC_dark_counts_cdom,45,counts
+1292,CC_dark_counts_chlorophyll_a,52,counts
+1292,CC_dark_counts_volume_scatter,51,counts
+1292,CC_depolarization_ratio,0.039,Don't know where these come from
+1292,CC_measurement_wavelength,700,Don't know where these come from
+1292,CC_scale_factor_cdom,0.0906,ppb/count
+1292,CC_scale_factor_chlorophyll_a,0.0121,ug/l/count
+1292,CC_scale_factor_volume_scatter,1.842e-06,(m^-1*sr^-1)/counts
+1292,CC_scattering_angle,124,Don't know where these come from
