@@ -20,9 +20,10 @@ from xlrd import XLRDError
 
 from model import Base, IngestRoute, Deployment, Calibration, Bulk
 
-dbfile = 'test.db'
+dbfile = 'convert.db'
 url = 'sqlite:///%s' % dbfile
-bulk_path = '/Users/petercable/src/asset-management/bulk/bulk_merged-AssetRecord.csv'
+bulk_path = '../../bulk/bulk_load-AssetRecord.csv'
+
 
 if os.path.exists(dbfile):
     os.unlink(dbfile)
@@ -143,10 +144,10 @@ def get_bulk():
     session.commit()
 
 
-def get_ingest():
+def get_ingest(ingest_dir):
     print 'Getting INGEST records'
     session = Session()
-    for path, dirs, files in os.walk('/Users/petercable/src/ingestion-csvs'):
+    for path, dirs, files in os.walk(ingest_dir):
         for f in files:
             if f.endswith('.csv'):
                 df = pd.read_csv(os.path.join(path, f))
@@ -241,10 +242,10 @@ def update_deployments(refdes, dnum, uid, launch, recover, lat, lon, cruise, dep
     session.flush()
 
 
-def get_deployments(pat='*.xlsx'):
+def get_deployments(deployment_dir, pat='*.xlsx'):
     print 'get_deployments'
     session = Session()
-    for path, dirs, files in os.walk('/Users/petercable/src/asset-management/deployment'):
+    for path, dirs, files in os.walk(deployment_dir):
         for f in fnmatch.filter(files, pat):
             try:
                 f = os.path.join(path, f)
@@ -278,12 +279,12 @@ def get_deployments(pat='*.xlsx'):
     session.commit()
 
 
-def get_cals(pat='*.xlsx'):
+def get_cals(deployment_dir, pat='*.xlsx'):
     print 'get_cals'
     session = Session()
     fields = ['Ref Des', 'Mooring OOIBARCODE', 'Deployment Number', 'Sensor OOIBARCODE', 'Sensor Serial Number',
               'Calibration Cofficient Name', 'Calibration Cofficient Value', 'Notes']
-    for path, dirs, files in os.walk('/Users/petercable/src/asset-management/deployment'):
+    for path, dirs, files in os.walk(deployment_dir):
         for f in fnmatch.filter(files, pat):
             f = os.path.join(path, f)
             print 'Calibration file:', f
@@ -310,8 +311,13 @@ def get_cals(pat='*.xlsx'):
                     if not all((in_bulk(mooring_uid, session), in_bulk(sensor_uid, session))):
                         print 'NOT IN BULK', each
 
+                    # sometimes the serial field is a NUMERIC cell, so
                     if isinstance(serial, float):
-                        serial = int(serial)
+                        serial_str = str(serial)
+                        if serial_str.endswith('.0'):
+                            serial = str(int(serial))
+                        else:
+                            serial = serial_str
 
                     deployment = get_or_create_deployment(refdes, dnum, sensor_uid, session)
                     deployment.mooring_uid = mooring_uid
@@ -330,12 +336,15 @@ def get_cals(pat='*.xlsx'):
 
     session.commit()
 
-if len(sys.argv) < 2:
-    mask = '*.xlsx'
-else:
-    mask = sys.argv[1]
+
+ingest_dir = sys.argv[1]
+deploy_dir = sys.argv[2]
+mask = '*.xlsx'
+
+if len(sys.argv) > 3:
+    mask = sys.argv[3]
 
 get_bulk()
-get_ingest()
-get_cals(mask)
-get_deployments(mask)
+get_ingest(ingest_dir)
+get_cals(deploy_dir, pat=mask)
+get_deployments(deploy_dir, pat=mask)

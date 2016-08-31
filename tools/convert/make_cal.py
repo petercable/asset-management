@@ -10,7 +10,7 @@ from unidecode import unidecode
 
 from model import Calibration
 
-url = 'sqlite:///test.db'
+url = 'sqlite:///convert.db'
 
 engine = create_engine(url, convert_unicode=True)
 Session = sessionmaker(bind=engine)

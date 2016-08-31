@@ -10,7 +10,7 @@ from sqlalchemy.sql.elements import and_
 
 from model import IngestRoute, Deployment
 
-url = 'sqlite:///test.db'
+url = 'sqlite:///convert.db'
 deploy_dir = 'DEPLOY_CSV'
 
 engine = create_engine(url, convert_unicode=True)
