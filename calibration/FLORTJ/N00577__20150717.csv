@@ -1,0 +1,11 @@
+serial,name,value,notes
+1207,CC_angular_resolution,1.076,X (Chi) factor for high angular resolution.
+1207,CC_dark_counts_cdom,41,Measured signal output of fluormeter in clean water with black tape over the detector [counts]
+1207,CC_dark_counts_chlorophyll_a,50,Measured signal output of fluormeter in clean water with black tape over the detector [counts]
+1207,CC_dark_counts_volume_scatter,46,Measured signal output of fluormeter in clean water with black tape over the detector [counts]
+1207,CC_depolarization_ratio,0.039,Depolarization ratio [unitless].
+1207,CC_measurement_wavelength,700,Optical backscatter measurement wavelength [nm].
+1207,CC_scale_factor_cdom,0.0904,Multiplier [ppb counts^-1]
+1207,CC_scale_factor_chlorophyll_a,0.0121,Multiplier [ug L^-1 counts^-1]
+1207,CC_scale_factor_volume_scatter,3.016e-06,Multiplier [m^-1 sr^-1 counts^-1]
+1207,CC_scattering_angle,124,Optical backscatter scattering angle [degrees].

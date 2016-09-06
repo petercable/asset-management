@@ -1,0 +1,19 @@
+serial,name,value,notes
+26P76848-1386,CC_b,2796.2,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_c1,2066.838,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_c2,-12.70562,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_c3,-3470.497,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_d1,0.02391,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_d2,0,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_m,41943,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_offset_correction_factor,0,"Offset correction factor, assumed to be 0.0 by default; I (Gaul) have no good proof for this."
+26P76848-1386,CC_pressure_offset_calibration_coefficient,-0.217,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_slope_correction_factor,1,"Slope correction factor, assumed to be 1.0 by default; I (Gaul) have no good proof for this."
+26P76848-1386,CC_t1,27.63804,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_t2,0.427875,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_t3,17.7624,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_t4,21.86445,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_u0,5.810283,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_y1,-3944.121,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_y2,-10737.63,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap
+26P76848-1386,CC_y3,0,From CG Vault > Project Files > Records > Instrument Records > 3305-00105-00010-A.zip > 3305-00105-00010-11042014-A.cap

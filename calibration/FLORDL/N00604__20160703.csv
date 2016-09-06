@@ -1,0 +1,9 @@
+serial,name,value,notes
+2736,CC_angular_resolution,1.096,Constant
+2736,CC_dark_counts_chlorophyll_a,45.0,
+2736,CC_dark_counts_volume_scatter,46.0,Requires PD1960/1962 (tempwat/pracsal) from nearby CTD (GP02HYPM-WFP03-04-CTDPFL000?)
+2736,CC_depolarization_ratio,0.039,Constant
+2736,CC_measurement_wavelength,700.0,Constant
+2736,CC_scale_factor_chlorophyll_a,0.0068,
+2736,CC_scale_factor_volume_scatter,1.828e-06,
+2736,CC_scattering_angle,140.0,Constant

@@ -1,0 +1,13 @@
+serial,name,value,notes
+1119,CC_angular_resolution,1.076,"Default values defined in DPA: def flo_bback_total(beta, degC=20.0, psu=32.0, theta=117.0, wlngth=700.0, xfactor=1.08)
+"
+1119,CC_dark_counts_cdom,60.0,From WHOI Vault; $/Project_Files/Records/Platform_Records/McLane_Research/BBFL2_Cal_Files
+1119,CC_dark_counts_chlorophyll_a,50.0,
+1119,CC_dark_counts_volume_scatter,49.0,
+1119,CC_depolarization_ratio,0.039,"Default values defined in DPA: def flo_scat_seawater(degC, psu, theta=117.0, wlngth=700.0, delta=0.039)
+"
+1119,CC_measurement_wavelength,700.0,
+1119,CC_scale_factor_cdom,0.0904,
+1119,CC_scale_factor_chlorophyll_a,0.0125,
+1119,CC_scale_factor_volume_scatter,3.095e-06,
+1119,CC_scattering_angle,124.0,

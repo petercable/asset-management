@@ -1,0 +1,19 @@
+serial,name,value,notes
+26P-1398,CC_b,838.8,
+26P-1398,CC_c1,-4631.526,IDD for data recovered directly from
+26P-1398,CC_c2,35.76706,the PRESF instrument needs to be written - eventually.
+26P-1398,CC_c3,13013.89,
+26P-1398,CC_d1,0.070047,
+26P-1398,CC_d2,0,
+26P-1398,CC_m,12582.9,
+26P-1398,CC_offset_correction_factor,0,Constant
+26P-1398,CC_pressure_offset_calibration_coefficient,-0.384,from SBE offset_correction pdf
+26P-1398,CC_slope_correction_factor,1,Constant
+26P-1398,CC_t1,30.15172,
+26P-1398,CC_t2,0.637047,
+26P-1398,CC_t3,43.94804,
+26P-1398,CC_t4,107.149,
+26P-1398,CC_u0,5.831272,
+26P-1398,CC_y1,-3939.646,
+26P-1398,CC_y2,-10461.55,
+26P-1398,CC_y3,0,

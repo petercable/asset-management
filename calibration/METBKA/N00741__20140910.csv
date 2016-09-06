@@ -1,0 +1,8 @@
+serial,name,value,notes
+LGR004,CC_depth_of_conductivity_and_temperature_measurements_m,1.25,Depth of sea temperature measurement TEMPSRF [m]
+LGR004,CC_height_of_air_humidity_measurement_m,5.12,height of air humidity measurement RELHUMI [m]
+LGR004,CC_height_of_air_temperature_measurement_m,5.12,Height of air temperature measurement TEMPAIR [m]
+LGR004,CC_height_of_windspeed_sensor_above_sealevel_m,5.31,Height of windspeed measurement WINDAVG_L0 [m]
+LGR004,CC_jcool,1,do coolskin calc
+LGR004,CC_jwarm,1,do warmlayer calc
+LGR004,CC_zinvpbl,600,"Default from <def met_buoyfls(tC_sea, wnd, tC_air, relhum, timestamp, lon, ztmpwat, zwindsp, ztmpair, zhumair, lat=45.0, pr_air=1013.0, Rshort_down=150.0, Rlong_down=370.0, cumu_prcp=0.0, zinvpbl=600.0, jwarm=JWARMFL, jcool=JCOOLFL)>"

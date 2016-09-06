@@ -1,0 +1,8 @@
+serial,name,value,notes
+CP03ISSM-00002-METBK,CC_depth_of_conductivity_and_temperature_measurements_m,1.0668,S/N to be determined after recovery
+CP03ISSM-00002-METBK,CC_height_of_air_humidity_measurement_m,4.2926,S/N to be determined after recovery
+CP03ISSM-00002-METBK,CC_height_of_air_temperature_measurement_m,4.2926,S/N to be determined after recovery
+CP03ISSM-00002-METBK,CC_height_of_windspeed_sensor_above_sealevel_m,4.7498,S/N to be determined after recovery
+CP03ISSM-00002-METBK,CC_jcool,1,Constant
+CP03ISSM-00002-METBK,CC_jwarm,1,Constant
+CP03ISSM-00002-METBK,CC_zinvpbl,600,Constant

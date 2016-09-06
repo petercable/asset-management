@@ -1,0 +1,3 @@
+CUID_Deploy,deployedBy,CUID_Recover,recoveredBy,Reference Designator,deploymentNumber,versionNumber,startDateTime,stopDateTime,mooring.uid,node.uid,sensor.uid,lat,lon,orbit,depth
+TN-928,,,,RS01SUM1-LJ01B-09-PRESTB102,2,1,2016-07-24T04:21:00,,ATAPL-65310-850-0012,,ATAPL-69923-00002,44.56927,-125.14804,,775
+TN-928,,,,RS01SUM1-LJ01B-12-VEL3DB104,2,1,2016-07-24T04:21:00,,ATAPL-65310-850-0012,,ATAPL-67679-00006,44.56911,-125.14797,,775

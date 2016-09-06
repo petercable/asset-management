@@ -1,0 +1,11 @@
+serial,name,value,notes
+1289,CC_angular_resolution,1.076,"NO CHANGE, Don't know where these come from"
+1289,CC_dark_counts_cdom,51,counts
+1289,CC_dark_counts_chlorophyll_a,49,counts
+1289,CC_dark_counts_volume_scatter,48,counts
+1289,CC_depolarization_ratio,0.039,"NO CHANGE, Don't know where these come from"
+1289,CC_measurement_wavelength,700,"NO CHANGE, Don't know where these come from"
+1289,CC_scale_factor_cdom,0.0905,ppb/count
+1289,CC_scale_factor_chlorophyll_a,0.0121,ug/l/count
+1289,CC_scale_factor_volume_scatter,1.842e-06,(m^-1*sr^-1)/counts
+1289,CC_scattering_angle,124,Updated per info provided by Wetlabs on 8/24/15

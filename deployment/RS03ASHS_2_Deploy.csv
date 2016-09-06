@@ -1,0 +1,3 @@
+CUID_Deploy,deployedBy,CUID_Recover,recoveredBy,Reference Designator,deploymentNumber,versionNumber,startDateTime,stopDateTime,mooring.uid,node.uid,sensor.uid,lat,lon,orbit,depth
+TN-326,,,,RS03ASHS-MJ03B-00-OSMOIA301,2,1,2015-07-09T12:32:00,,ATAPL-65244-820-0033,,ATAPL-58333-00004,45.93367,-130.01369,,1541
+TN-326,,,,RS03ASHS-PN03B-H6-CAMHDA301,2,1,2015-07-09T13:28:24,,N00356,,ATAPL-70168-00002,45.93364,-130.01364,,1542

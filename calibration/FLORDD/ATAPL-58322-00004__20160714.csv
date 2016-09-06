@@ -1,0 +1,11 @@
+serial,name,value,notes
+1131,CC_angular_resolution,1.076,copy from previous deployment
+1131,CC_dark_counts_cdom,40,counts - from FLOR-D - BBFL2W-1131 - 58322-4 - RMA 028870 - JAN 2016.pdf - CDOM
+1131,CC_dark_counts_chlorophyll_a,49,counts - from FLOR-D - BBFL2W-1131 - 58322-4 - RMA 028870 - JAN 2016.pdf - CHL
+1131,CC_dark_counts_volume_scatter,48,counts - from FLOR-D - BBFL2W-1131 - 58322-4 - RMA 028870 - JAN 2016.pdf - Scattering
+1131,CC_depolarization_ratio,0.039,copy from previous deployment
+1131,CC_measurement_wavelength,700,nm
+1131,CC_scale_factor_cdom,0.0711,ppb/count
+1131,CC_scale_factor_chlorophyll_a,0.0123,ug/l/count
+1131,CC_scale_factor_volume_scatter,2.059e-06,(m^-1*sr^-1)/counts
+1131,CC_scattering_angle,124,copy from previous deployment

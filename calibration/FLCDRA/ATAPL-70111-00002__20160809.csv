@@ -1,0 +1,3 @@
+serial,name,value,notes
+3399,CC_dark_counts_cdom,85,from FLCDRTD-3399 [ATAPL-70111-00002] - Calibration and Repairs - RMA 028870 - DEC 2015.pdf
+3399,CC_scale_factor_cdom,0.0262,

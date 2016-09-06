@@ -1,0 +1,6 @@
+serial,name,value,notes
+22717,CC_depth,7000,CEW: use 7m as default (00001 entry was 5000)
+22717,CC_scale_factor1,0.45,
+22717,CC_scale_factor2,0.45,
+22717,CC_scale_factor3,0.45,
+22717,CC_scale_factor4,0.45,

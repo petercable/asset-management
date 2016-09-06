@@ -1,0 +1,9 @@
+serial,name,value,notes
+3398,CC_angular_resolution,1.096,
+3398,CC_dark_counts_chlorophyll_a,47,
+3398,CC_dark_counts_volume_scatter,49,from FLNTURTD-3398 - RMA 028870 - ReqID151020031 - rec'd DEC 2015.pdf
+3398,CC_depolarization_ratio,0.039,
+3398,CC_measurement_wavelength,700,
+3398,CC_scale_factor_chlorophyll_a,0.012,
+3398,CC_scale_factor_volume_scatter,1.873e-05,
+3398,CC_scattering_angle,140,
