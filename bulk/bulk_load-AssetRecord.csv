@@ -1886,10 +1886,10 @@ ATAPL-58332-00005,Sensor,0,AC-S (optical attenuation and absorption instrument w
 ATAPL-58332-00006,Sensor,0,AC-S (optical attenuation and absorption instrument w/ biofouling/pump) per OPTAA delivery order,Wet Labs,AC-S,ACS-251,,20150529,40133.75,
 ATAPL-58333-00003,Sensor,0,RS01SUM2-MJ01B-00-OSMOIA101,,,4,,,,
 ATAPL-58333-00004,Sensor,0,RS01SUM2-MJ01B-00-OSMOIA101,,,,,,,
-ATAPL-58334-00001,,,CAT meter for autonomous deployment (FLOBN),MICHAEL TRYON,CAT,1,,20130513,8827.28,
-ATAPL-58334-00002,,,CAT meter for autonomous deployment (FLOBN),MICHAEL TRYON,CAT,2,,20130513,8827.28,
-ATAPL-58334-00003,,,CAT meter for autonomous deployment (FLOBN)  (O&M),MICHAEL TRYON,CAT,3,,20130513,8827.28,
-ATAPL-58334-00004,,,CAT meter for autonomous deployment (FLOBN),MICHAEL TRYON,CAT,4,,20150522,6400,
+ATAPL-58334-00001,Sensor,0,CAT meter for autonomous deployment (FLOBN),MICHAEL TRYON,CAT,1,,20130513,8827.28,
+ATAPL-58334-00002,Sensor,0,CAT meter for autonomous deployment (FLOBN),MICHAEL TRYON,CAT,2,,20130513,8827.28,
+ATAPL-58334-00003,Sensor,0,CAT meter for autonomous deployment (FLOBN)  (O&M),MICHAEL TRYON,CAT,3,,20130513,8827.28,
+ATAPL-58334-00004,Sensor,0,CAT meter for autonomous deployment (FLOBN),MICHAEL TRYON,CAT,4,,20150522,6400,
 ATAPL-58336-00001,Sensor,0,SAMI2 CO2,Sunburst Sensors,SAMI-CO2 (1.5 L),SAMI2-C0047,,20120717,17955,
 ATAPL-58336-00002,Sensor,0,SAMI2 CO2,Sunburst Sensors,SAMI-CO2 (1.5 L),SAMI2-C0075,,20131127,18494,
 ATAPL-58336-00003,Sensor,0,SAMI2 CO2,Sunburst Sensors,SAMI-CO2 (1.5 L),SAMI2-C0076,,20131127,18494,
@@ -3170,7 +3170,7 @@ N00125,Node,0,"Profiler, Coastal Surface Piercing",Wet Labs,Coastal Profiler,WLP
 N00125.1,Sensor,0,"Profiler, Coastal Surface Piercing",Wet Labs,Coastal Profiler,WLP-005,,20140801,310000,
 N00126,Node,0,Cabled Profiler Sensor Pod w/Instrument,Wet Labs,FAS-540601,WLP-006,,20140929,273349,
 N00126.1,Sensor,0,Cabled Profiler Sensor Pod w/Instrument,Wet Labs,FAS-540601,WLP-006,,20140929,273349,
-N00127,,,CTD for WFP Coastal ML13104-04,,,135,,20140925,,
+N00127,Sensor,0,CTD for WFP Coastal ML13104-04,,,135,,20140925,,
 N00128,Sensor,0,DOSTA for WFP Coastal ML13104-04,AANDERAA,4831,1473,,20140925,,
 N00129,Sensor,0,FLOR for WFP Coastal ML13104-04,,,3279,,20140925,,
 N00130,Sensor,0,VEL3D for WFP Coastal ML13104-04,,,1110-ML13104-04D,,20140925,,
@@ -3681,6 +3681,16 @@ OL000005,Sensor,0,SIO Controller,,,13994 / 21,,,,
 OL000006,Sensor,0,MOPAK - 3-Axis Motion Pack,MicroStrain,3DM-GX3-25,GA01SUMO-00002-MOPAK,,,,
 OL000007,Sensor,0,Hydrogen Sensor,RKI,M2A transmitters,GA01SUMO-00001-HYDGN1,,,,
 OL000008,Sensor,0,Hydrogen Sensor,RKI,M2A transmitters,GA01SUMO-00001-HYDGN2,,,,
+OL000009,Sensor,0,CTDBP Series P,,,GA01SUMO-00001-CTDBPP031,,,,TODO placeholder
+OL000010,Sensor,0,CTDBP Series P,,,GA01SUMO-00001-CTDBPP032,,,,TODO placeholder
+OL000011,Sensor,0,CTDBP Series P,,,GA01SUMO-00001-CTDBPP033,,,,TODO placeholder
+OL000012,Sensor,0,Controller S/N,,,GA01SUMO-00001-FLORDG031,,,,TODO placeholder
+OL000013,Sensor,0,2-Wavelength Fluorometer Series G,,,GA01SUMO-00001-FLORDG032,,,,TODO placeholder
+OL000014,Sensor,0,2-Wavelength Fluorometer Series G,,,GA01SUMO-00001-FLORDG033,,,,TODO placeholder
+OL000015,Sensor,0,Communications and Power Manager,,,GA01SUMO-00001-CPM1,,,,TODO placeholder
+OL000016,Sensor,0,Data Concentrator Logger,,,GA01SUMO-00001-DCL11,,,,TODO placeholder
+OL000017,Sensor,0,Data Concentrator Logger,,,GA01SUMO-00001-DCL12,,,,TODO placeholder
+OL000018,Sensor,0,Data Concentrator Logger,,,GA01SUMO-00001-DCL16,,,,TODO placeholder
 OL000019,Sensor,0,Controller S/N,,,13286 / 14,,,,
 OL000020,Sensor,0,SIO Controller,,,13280 / 9,,,,
 OL000021,Sensor,0,Controller S/N,,,12372 ID 01,,,,
@@ -3709,7 +3719,9 @@ OL000043,Sensor,0,CTDPF Series L,,,151,,,,
 OL000044,Sensor,0,VEL3D Series L,,,1253,,,,
 OL000045,Sensor,0,SIO Controller,,,14871,,,,
 OL000046,Node,0,WFP GLOBAL,MCLANE,,13452-01,,,,
+OL000046.1,Sensor,0,WFP GLOBAL,MCLANE,,13452-01,,,,
 OL000047,Node,0,WFP GLOBAL,MCLANE,,13452-02,,,,
+OL000047.1,Sensor,0,WFP GLOBAL,MCLANE,,13452-02,,,,
 OL000048,Platform,0,MOORING Argentine OS,WHOI,GA02HYPM,GA02HYPM-00002,,,,
 OL000048.1,Sensor,0,GA02HYPM-00002 SIO Electronics,,,14880,,,,
 OL000049,Sensor,0,FLORD Series L,,,4015,,,,
@@ -3724,7 +3736,7 @@ OL000057,Node,0,WFP GLOBAL,MCLANE,,13452-03,,,,
 OL000057.1,Sensor,0,WFP GLOBAL Electronics #1,MCLANE,,13452-03,,,,
 OL000058,Node,0,WFP GLOBAL,MCLANE,,13452-04,,,,
 OL000058.1,Sensor,0,WFP GLOBAL Electronics #1,MCLANE,,13452-04,,,,
-OL000059,,,SIO Controller,,,14880,,,,
+OL000059,Sensor,0,SIO Controller,,,14880,,,,
 OL000060,Sensor,0,SIO Controller,,,GP02HYPM-00002-SIOENG,,,,
 OL000061,Sensor,0,GA01SUMO-00002-METBK,,,LGR024,,,,
 OL000062,Sensor,0,GA01SUMO-00002-METBK,,,LGR025,,,,
