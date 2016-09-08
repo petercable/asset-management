@@ -4,40 +4,37 @@ import os
 
 import pandas
 import logging
-import unittest
 
 from dateutil import parser
 from nose.plugins.attrib import attr
+
+from ..test_base import AssetManagementUnitTest
 
 logging.basicConfig()
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
 
-TEST_ROOT = os.path.dirname(__file__)
-AM_ROOT = os.path.abspath(os.path.join(TEST_ROOT, '..'))
-BULK_ROOT = os.path.join(AM_ROOT, 'bulk')
-CAL_ROOT = os.path.join(AM_ROOT, 'calibration')
-BULK_FILE = os.path.join(BULK_ROOT, 'bulk_load-AssetRecord.csv')
+class FileNameException(Exception):
+    pass
 
 
 @attr('UNIT')
-class AssetManagementTest(unittest.TestCase):
+class CalibrationFilesUnitTest(AssetManagementUnitTest):
     def setUp(self):
         """
         Read bulk load asset management data and save UID and serial numbers
         :return:
         """
-        self.data = pandas.read_csv(BULK_FILE)
+        super(CalibrationFilesUnitTest, self).setUp()
         self.ids = {}  # dictionary of all the UIDs and corresponding serial numbers
-        for _, record in self.data.iterrows():
-            uid = str(record.ASSET_UID)
-            sn = str(record["Manufacturer's Serial No./Other Identifier"])
+        for _, record in self.bulk_data.iterrows():
+            uid = str(record.uid)
+            sn = str(record.serialNumber)
             self.ids[uid] = sn
 
-    @staticmethod
-    def walk_cal_files():
-        for path, dirs, files in os.walk(CAL_ROOT):
+    def walk_cal_files(self):
+        for path, dirs, files in os.walk(self.CAL_ROOT):
             for name in fnmatch.filter(files, '*.csv'):
                 yield os.path.join(path, name)
 
@@ -47,14 +44,18 @@ class AssetManagementTest(unittest.TestCase):
 
     @staticmethod
     def parse_filename(filename):
-        return os.path.basename(filename).replace('.csv', '').split("__")
+        try:
+            return os.path.basename(filename).replace('.csv', '').split("__")
+        except Exception as e:
+            log.exception('Exception parsing calibration filename')
+            raise FileNameException(e.message)
 
     def check_filename(self, filename):
         errors = []
 
         try:
             uid, timestamp = self.parse_filename(filename)
-        except:
+        except FileNameException:
             return ['Invalid calibration filename (%s)' % filename]
 
         if uid not in self.ids:
@@ -73,7 +74,7 @@ class AssetManagementTest(unittest.TestCase):
         errors = []
         try:
             uid, _ = self.parse_filename(filename)
-        except:
+        except FileNameException:
             return ['Unable to parse file (%s)' % filename]
 
         df = self.parse_cal_file(filename)
@@ -105,7 +106,7 @@ class AssetManagementTest(unittest.TestCase):
         errors = []
         try:
             uid, _ = self.parse_filename(filename)
-        except:
+        except FileNameException:
             return ['Unable to parse file (%s)' % filename]
 
         df = self.parse_cal_file(filename)

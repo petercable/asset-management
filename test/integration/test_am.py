@@ -5,13 +5,17 @@ import os
 import time
 import unittest
 from bisect import bisect
+from collections import OrderedDict
 from datetime import datetime
 from glob import glob
+from numbers import Number
 
 import javaobj
 import numpy as np
 import pandas as pd
 import psycopg2
+import requests
+from dateutil import parser
 from xlrd import XLRDError
 
 logging.basicConfig()
@@ -19,11 +23,91 @@ log = logging.getLogger()
 log.setLevel(logging.INFO)
 
 
+TEST_ROOT = os.path.dirname(__file__)
+AM_ROOT = os.path.abspath(os.path.join(TEST_ROOT, '..'))
+BULK_ROOT = os.path.join(AM_ROOT, 'bulk')
+CAL_ROOT = os.path.join(AM_ROOT, 'calibration')
+BULK_FILE = os.path.join(BULK_ROOT, 'bulk_load-AssetRecord.csv')
+
+
+BULK_COLS = [
+    'uid',
+    'assetType',
+    'mobile',
+    'description',
+    'manufacturer',
+    'modelNumber',
+    'serialNumber',
+    'firmwareVersion',
+    'purchaseDate',
+    'purchasePrice',
+    'notes'
+]
+
+
 class AssetManagementTest(unittest.TestCase):
     def setUp(self):
         self.amhost = 'localhost'
         self.refdes = 'CE04OSPS-SF01B-2A-CTDPFA107'
         self.conn = psycopg2.connect(host='localhost', database='metadata', user='awips')
+        self.maxDiff = None
+
+    @staticmethod
+    def isnan(val):
+        return isinstance(val, Number) and np.isnan(val)
+
+    @staticmethod
+    def date_to_millis(date):
+        try:
+            date = str(int(date))
+            dt = parser.parse(date)
+            secs = (dt - datetime(1970, 1, 1)).total_seconds()
+            return int(secs * 1000)
+        except ValueError:
+            return None
+
+    @staticmethod
+    def maybe_float(data):
+        try:
+            return float(data)
+        except ValueError:
+            return data
+
+    def ordered_bulk_entry(self, data):
+        out = OrderedDict()
+        for k in BULK_COLS:
+            v = data.get(k)
+            if isinstance(v, unicode):
+                v = str(v)
+            elif v is None:
+                v = ''
+            elif self.isnan(v):
+                v = ''
+            if k == 'assetType' and v == 'Platform':
+                v = 'Mooring'
+            out[k] = v
+        return out
+
+    def assert_bulk_entry(self, row):
+        # retrieve the asset
+        asset = requests.get('http://localhost:12587/asset', params={'uid': row['uid']}).json()
+        asset_map = self.ordered_bulk_entry(asset)
+        row_map = self.ordered_bulk_entry(row)
+
+        print 'AM  :', asset_map
+        print 'BULK:', row_map
+        print
+        self.assertDictEqual(asset_map, row_map)
+
+    def test_bulk_load(self):
+        df = pd.read_csv(BULK_FILE, names=BULK_COLS, skiprows=1, na_values='', keep_default_na=False)
+        df.fillna({'mobile': 0, 'assetType': 'notClassified'}, inplace=True)
+        df['mobile'] = df.mobile.values.astype(bool)
+        df['purchaseDate'] = map(self.date_to_millis, df.purchaseDate.values)
+        df['purchasePrice'] = map(self.maybe_float, df.purchasePrice.values)
+        for _, row in df.iterrows():
+            print row.to_dict()
+            self.assert_bulk_entry(row.to_dict())
 
     def assert_cal_times(self, calibrations, asset, dstart, dstop):
         if not calibrations:

@@ -1,76 +1,54 @@
 import fnmatch
 import logging
 import os
-import unittest
 
-import numpy
 import pandas
-
-from dateutil import parser
-from numbers import Number
-
 from nose.plugins.attrib import attr
+
+from ..test_base import AssetManagementUnitTest
 
 logging.basicConfig()
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
-required_ids = {
-    'Reference Designator',
-    'deploymentNumber',
-    'startDateTime',
-    'mooring.uid',
-    'sensor.uid',
-    'lat',
-    'lon',
-}
-
-optional_ids = {
-    'CUID_Deploy',
-    'deployedBy',
-    'CUID_Recover',
-    'recoveredBy',
-    'versionNumber',
-    'stopDateTime',
-    'node.uid',  # only required for profilers
-    'orbit',
-    'depth'
-}
-
-
-TEST_ROOT = os.path.dirname(__file__)
-AM_ROOT = os.path.abspath(os.path.join(TEST_ROOT, '..'))
-BULK_ROOT = os.path.join(AM_ROOT, 'bulk')
-DEP_ROOT = os.path.join(AM_ROOT, 'deployment')
-BULK_FILE = os.path.join(BULK_ROOT, 'bulk_load-AssetRecord.csv')
-
-
-def valid_float(value):
-    return isinstance(value, Number) and not numpy.isnan(value)
-
-
-def valid_time_format(timestamp):
-    return timestamp == parser.parse(timestamp).isoformat()
-
 
 @attr('UNIT')
-class AssetManagementTest(unittest.TestCase):
+class DeploymentFilesUnitTest(AssetManagementUnitTest):
+    asset_map = {
+        'mooring.uid': 'Platform',
+        'sensor.uid': 'Sensor',
+        'node.uid': 'Node'
+    }
+
+    required_ids = {
+        'Reference Designator',
+        'deploymentNumber',
+        'startDateTime',
+        'mooring.uid',
+        'sensor.uid',
+        'lat',
+        'lon',
+    }
+
+    optional_ids = {
+        'CUID_Deploy',
+        'deployedBy',
+        'CUID_Recover',
+        'recoveredBy',
+        'versionNumber',
+        'stopDateTime',
+        'node.uid',  # only required for profilers
+        'orbit',
+        'depth'
+    }
+
     def setUp(self):
         """
         Read bulk load asset management data and save UID and serial numbers
         """
-        self.data = pandas.read_csv(BULK_FILE).fillna('')
-        self.ids = {}  # dictionary of all the UIDs and corresponding serial numbers
-        for _, record in self.data.iterrows():
-            uid = str(record.ASSET_UID)
-            ttype = str(record["TYPE"])
-            self.ids[uid] = ttype
-
-        self.asset_map = {
-            'mooring.uid': 'Platform',
-            'sensor.uid': 'Sensor',
-            'node.uid': 'Node'
-        }
+        super(DeploymentFilesUnitTest, self).setUp()
+        # dictionary of all the UIDs and corresponding serial numbers
+        self.ids = {str(record.uid): str(record.assetType) for _, record in self.bulk_data.iterrows()}
 
     def check_type_match(self, record, asset_key):
         """
@@ -106,7 +84,7 @@ class AssetManagementTest(unittest.TestCase):
         deployment = pandas.read_csv(fn).fillna('')
 
         # make sure all fields are present
-        missing = required_ids.union(optional_ids) - set(deployment.columns)
+        missing = self.required_ids.union(self.optional_ids) - set(deployment.columns)
         if missing:
             errors.append('Missing required column identifiers: %s' % missing)
             return errors
@@ -116,7 +94,7 @@ class AssetManagementTest(unittest.TestCase):
             try:
                 # make sure all required fields are filled out
                 set_fields = {name for name in record.index if getattr(record, name)}
-                missing = required_ids - set_fields
+                missing = self.required_ids - set_fields
                 if missing:
                     errors.append('Missing value(s) for required fields: %s on row %d - %r' %
                                   (missing, index, record.values))
@@ -130,19 +108,19 @@ class AssetManagementTest(unittest.TestCase):
 
                 # start and stop (if present) must have correct format
                 start_time = record['startDateTime']
-                if start_time and not valid_time_format(start_time):
+                if start_time and not self.valid_time_format(start_time):
                     errors.append('Invalid time format for startDateTime - "%r" - row %d' % (start_time, index))
 
                 stop_time = record['stopDateTime']
-                if stop_time and not valid_time_format(stop_time):
+                if stop_time and not self.valid_time_format(stop_time):
                     errors.append('Invalid time format for stopDateTime - "%r" - row %d' % (stop_time, index))
 
                 lat = record['lat']
-                if not valid_float(lat):
+                if not self.valid_float(lat):
                     errors.append('Invalid format for latitude - "%r" - row %d' % (lat, index))
 
                 lon = record['lon']
-                if not valid_float(lon):
+                if not self.valid_float(lon):
                     errors.append('Invalid format for longitude - "%r" - row %d' % (lon, index))
 
                 # depth = record['depth']
@@ -160,7 +138,7 @@ class AssetManagementTest(unittest.TestCase):
         Cycle through all available deployment files and check
         """
         error_count = 0
-        for root, dirs, files in os.walk(DEP_ROOT, topdown=False):
+        for root, dirs, files in os.walk(self.DEP_ROOT, topdown=False):
             for name in fnmatch.filter(files, '*.csv'):
                 filename = os.path.join(root, name)
                 errors = self.check_deploy_file(filename)
