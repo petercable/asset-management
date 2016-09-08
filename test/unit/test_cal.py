@@ -8,15 +8,12 @@ import logging
 from dateutil import parser
 from nose.plugins.attrib import attr
 
-from ..test_base import AssetManagementUnitTest
+from ..test_base import AssetManagementUnitTest, FileNameException
 
 logging.basicConfig()
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
-
-class FileNameException(Exception):
-    pass
 
 
 @attr('UNIT')
@@ -33,28 +30,11 @@ class CalibrationFilesUnitTest(AssetManagementUnitTest):
             sn = str(record.serialNumber)
             self.ids[uid] = sn
 
-    def walk_cal_files(self):
-        for path, dirs, files in os.walk(self.CAL_ROOT):
-            for name in fnmatch.filter(files, '*.csv'):
-                yield os.path.join(path, name)
-
-    @staticmethod
-    def parse_cal_file(filepath):
-        return pandas.read_csv(filepath)
-
-    @staticmethod
-    def parse_filename(filename):
-        try:
-            return os.path.basename(filename).replace('.csv', '').split("__")
-        except Exception as e:
-            log.exception('Exception parsing calibration filename')
-            raise FileNameException(e.message)
-
     def check_filename(self, filename):
         errors = []
 
         try:
-            uid, timestamp = self.parse_filename(filename)
+            uid, timestamp = self.parse_cal_filename(filename)
         except FileNameException:
             return ['Invalid calibration filename (%s)' % filename]
 
@@ -73,7 +53,7 @@ class CalibrationFilesUnitTest(AssetManagementUnitTest):
     def check_serial(self, filename):
         errors = []
         try:
-            uid, _ = self.parse_filename(filename)
+            uid, _ = self.parse_cal_filename(filename)
         except FileNameException:
             return ['Unable to parse file (%s)' % filename]
 
@@ -105,7 +85,7 @@ class CalibrationFilesUnitTest(AssetManagementUnitTest):
     def check_values(self, filename):
         errors = []
         try:
-            uid, _ = self.parse_filename(filename)
+            uid, _ = self.parse_cal_filename(filename)
         except FileNameException:
             return ['Unable to parse file (%s)' % filename]
 

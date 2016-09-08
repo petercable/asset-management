@@ -41,7 +41,7 @@ def write_xlsx(in_dir, out_dir, filename):
             name = df[name_col][index]
             path = os.path.dirname(filepath)
             fname = filename.replace('.csv', '__%s.ext' % name)
-            subsheets[name] = pd.read_csv(os.path.join(path, fname))
+            subsheets[name] = pd.read_csv(os.path.join(path, fname), header=None)
             df[value_col].values[index] = value
 
     length = len(df)
@@ -57,7 +57,7 @@ def write_xlsx(in_dir, out_dir, filename):
     df[columns].to_excel(writer, sheet_name='Asset_Cal_Info', index=False)
 
     for name in subsheets:
-        subsheets[name].to_excel(writer, sheet_name=name, index=False, encoding='utf-8')
+        subsheets[name].to_excel(writer, sheet_name=name, index=False, header=False, encoding='utf-8')
 
     writer.close()
 

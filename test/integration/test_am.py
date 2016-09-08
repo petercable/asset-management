@@ -18,64 +18,23 @@ import requests
 from dateutil import parser
 from xlrd import XLRDError
 
+from ..test_base import AssetManagementUnitTest
+
 logging.basicConfig()
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
 
-TEST_ROOT = os.path.dirname(__file__)
-AM_ROOT = os.path.abspath(os.path.join(TEST_ROOT, '..'))
-BULK_ROOT = os.path.join(AM_ROOT, 'bulk')
-CAL_ROOT = os.path.join(AM_ROOT, 'calibration')
-BULK_FILE = os.path.join(BULK_ROOT, 'bulk_load-AssetRecord.csv')
-
-
-BULK_COLS = [
-    'uid',
-    'assetType',
-    'mobile',
-    'description',
-    'manufacturer',
-    'modelNumber',
-    'serialNumber',
-    'firmwareVersion',
-    'purchaseDate',
-    'purchasePrice',
-    'notes'
-]
-
-
-class AssetManagementTest(unittest.TestCase):
+class AssetManagementIntegrationTest(AssetManagementUnitTest):
     def setUp(self):
         self.amhost = 'localhost'
         self.refdes = 'CE04OSPS-SF01B-2A-CTDPFA107'
         self.conn = psycopg2.connect(host='localhost', database='metadata', user='awips')
         self.maxDiff = None
 
-    @staticmethod
-    def isnan(val):
-        return isinstance(val, Number) and np.isnan(val)
-
-    @staticmethod
-    def date_to_millis(date):
-        try:
-            date = str(int(date))
-            dt = parser.parse(date)
-            secs = (dt - datetime(1970, 1, 1)).total_seconds()
-            return int(secs * 1000)
-        except ValueError:
-            return None
-
-    @staticmethod
-    def maybe_float(data):
-        try:
-            return float(data)
-        except ValueError:
-            return data
-
     def ordered_bulk_entry(self, data):
         out = OrderedDict()
-        for k in BULK_COLS:
+        for k in self.BULK_COLS:
             v = data.get(k)
             if isinstance(v, unicode):
                 v = str(v)
@@ -88,26 +47,164 @@ class AssetManagementTest(unittest.TestCase):
             out[k] = v
         return out
 
+    @staticmethod
+    def get_asset_record(uid):
+        return requests.get('http://localhost:12587/asset', params={'uid': uid}).json()
+
+    @staticmethod
+    def get_deployment_record(refdes, deployment):
+        subsite, node, sensor = refdes.split('-', 2)
+        return requests.get('http://localhost:12587/events/deployment/inv/%s/%s/%s/%s' %
+                            (subsite, node, sensor, deployment)).json()
+
+    @staticmethod
+    def build_cal_value(data):
+        card = data['cardinality']
+        dimensions = data['dimensions']
+        values = data['values']
+        if card == 0:
+            return values[0]
+        return list(np.array(values).reshape(dimensions))
+
+    @staticmethod
+    def build_cal_timestamp(data):
+        return datetime.utcfromtimestamp(data['eventStartTime'] / 1000)
+
+    def get_cal_dict(self, uid):
+        asset = self.get_asset_record(uid)
+        cal_dict = {}
+        for calibration in asset.get('calibration', []):
+            name = calibration['name']
+            data = calibration['calData']
+            for each in data:
+                notes = each['comments']
+                value = self.build_cal_value(each)
+                timestamp = self.build_cal_timestamp(each)
+                cal_dict.setdefault(timestamp, {})[name] = value, notes
+        return cal_dict
+
     def assert_bulk_entry(self, row):
         # retrieve the asset
-        asset = requests.get('http://localhost:12587/asset', params={'uid': row['uid']}).json()
+        asset = self.get_asset_record(row['uid'])
         asset_map = self.ordered_bulk_entry(asset)
         row_map = self.ordered_bulk_entry(row)
-
-        print 'AM  :', asset_map
-        print 'BULK:', row_map
-        print
         self.assertDictEqual(asset_map, row_map)
 
+    def assert_cal_entry(self, df, uid, timestamp):
+        cal_dict = self.get_cal_dict(uid)
+        cal_times = sorted(cal_dict)
+        cal_index = bisect(cal_times, timestamp)
+
+        self.assertNotEqual(cal_index, 0, msg='No calibration data for UID (%s) at timestamp (%s)' % (uid, timestamp))
+
+        my_cal = cal_dict[cal_times[cal_index-1]]
+        for serial, name, value, notes in df.itertuples(index=False):
+            found = my_cal.get(name)
+            self.assertIsNotNone(found, msg='No calibration entry found for %s for UID (%s) at timestamp (%s) %r'
+                                            % (name, uid, timestamp, my_cal.keys()))
+            found_value, found_notes = found
+
+            if self.isnan(notes):
+                notes = None
+
+            if isinstance(value, basestring):
+                if value.startswith('SheetRef:'):
+                    # print value
+                    continue
+                else:
+                    value = json.loads(value)
+
+            np.testing.assert_almost_equal(found_value, value)
+            self.assertEqual(found_notes, notes)
+
+    def assert_deployment_entry(self, row):
+        if self.isnan(row['mooring.uid']):
+            return
+
+        if self.isnan(row['sensor.uid']):
+            return
+
+        if self.isnan(row['startDateTime']):
+            return
+
+        row_dict = row.to_dict()
+        for k, v in row_dict.iteritems():
+            if self.isnan(v):
+                row_dict[k] = None
+
+        refdes = row_dict['Reference Designator']
+        dnum = row_dict['deploymentNumber']
+
+        deployment = self.get_deployment_record(refdes, dnum)
+        self.assertEqual(len(deployment), 1, msg='Wrong number of deployments found %s %s %d' %
+                                                 (refdes, dnum, len(deployment)))
+        deployment = deployment[0]
+
+        deploy_cruise = deployment.get('deployCruiseInfo')
+        recover_cruise = deployment.get('recoverCruiseInfo')
+        mooring = deployment.get('mooring')
+        node = deployment.get('node')
+        sensor = deployment.get('sensor')
+        deploy_cruise = None if deploy_cruise is None else deploy_cruise['cruiseIdentifier']
+        recover_cruise = None if recover_cruise is None else recover_cruise['cruiseIdentifier']
+        mooring = None if mooring is None else mooring['uid']
+        node = None if node is None else node['uid']
+        sensor = None if sensor is None else sensor['uid']
+
+        location = deployment.get('location')
+        location = {} if location is None else location
+        lat = location.get('latitude')
+        lon = location.get('longitude')
+        orbit = location.get('orbitRadius')
+        depth = location.get('depth')
+
+        print row
+
+        self.assertEqual(deploy_cruise, row_dict['CUID_Deploy'])
+        self.assertEqual(deployment.get('deployedBy'), row_dict['deployedBy'])
+        self.assertEqual(recover_cruise, row_dict['CUID_Recover'])
+        self.assertEqual(deployment.get('recoveredBy'), row_dict['recoveredBy'])
+        self.assertEqual(deployment.get('eventName'), row_dict['Reference Designator'])
+        self.assertEqual(deployment.get('deploymentNumber'), row_dict['deploymentNumber'])
+        self.assertEqual(deployment.get('versionNumber'), row_dict['versionNumber'])
+        self.assertEqual(deployment.get('eventStartTime'), row_dict['startDateTime'])
+        self.assertEqual(deployment.get('eventStopTime'), row_dict['stopDateTime'])
+        self.assertEqual(mooring, row_dict['mooring.uid'])
+        self.assertEqual(node, row_dict['node.uid'])
+        self.assertEqual(sensor, row_dict['sensor.uid'])
+        np.testing.assert_almost_equal(lat, row_dict['lat'])
+        np.testing.assert_almost_equal(lon, row_dict['lon'])
+        self.assertEqual(orbit, row_dict['orbit'])
+        self.assertEqual(depth, row_dict['depth'])
+
+        # from pprint import pprint
+        # pprint(deployment)
+        # print row
+        # assert False
+
     def test_bulk_load(self):
-        df = pd.read_csv(BULK_FILE, names=BULK_COLS, skiprows=1, na_values='', keep_default_na=False)
-        df.fillna({'mobile': 0, 'assetType': 'notClassified'}, inplace=True)
+        df = self.bulk_data
+        df = df.fillna({'mobile': 0, 'assetType': 'notClassified'})
         df['mobile'] = df.mobile.values.astype(bool)
         df['purchaseDate'] = map(self.date_to_millis, df.purchaseDate.values)
         df['purchasePrice'] = map(self.maybe_float, df.purchasePrice.values)
         for _, row in df.iterrows():
-            print row.to_dict()
             self.assert_bulk_entry(row.to_dict())
+
+    def test_cal_load(self):
+        for path in self.walk_cal_files():
+            uid, timestamp = self.parse_cal_filename(path)
+            dt = parser.parse(timestamp)
+            df = self.parse_cal_file(path)
+            self.assert_cal_entry(df, uid, dt)
+
+    def test_deployment_load(self):
+        for path in self.walk_deployment_files():
+            # if 'RS01SBPD_1_Deploy' not in path:
+            #     continue
+            df = self.parse_dep_file(path)
+            for _, row in df.iterrows():
+                self.assert_deployment_entry(row)
 
     def assert_cal_times(self, calibrations, asset, dstart, dstop):
         if not calibrations:

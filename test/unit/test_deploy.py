@@ -87,7 +87,6 @@ class DeploymentFilesUnitTest(AssetManagementUnitTest):
         missing = self.required_ids.union(self.optional_ids) - set(deployment.columns)
         if missing:
             errors.append('Missing required column identifiers: %s' % missing)
-            return errors
 
         # check types for Platform and Sensor
         for index, record in deployment.iterrows():
@@ -138,7 +137,7 @@ class DeploymentFilesUnitTest(AssetManagementUnitTest):
         Cycle through all available deployment files and check
         """
         error_count = 0
-        for root, dirs, files in os.walk(self.DEP_ROOT, topdown=False):
+        for root, dirs, files in os.walk(self.DEP_ROOT):
             for name in fnmatch.filter(files, '*.csv'):
                 filename = os.path.join(root, name)
                 errors = self.check_deploy_file(filename)
