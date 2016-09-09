@@ -15,7 +15,6 @@ log = logging.getLogger()
 log.setLevel(logging.INFO)
 
 
-
 @attr('UNIT')
 class CalibrationFilesUnitTest(AssetManagementUnitTest):
     def setUp(self):
@@ -131,6 +130,25 @@ class CalibrationFilesUnitTest(AssetManagementUnitTest):
         self.assert_errors(errors)
 
     def test_class_variables(self):
+        # the following are allowed to vary within the instrument class
+        # due to DOFST constants being included on cabled CTDPFA
+        # and DOSTAD inconsistenly defining CC_ct_depth, which will be removed
+        # in favor of deployed instrument depth
+        allowed_diff = {
+            'CTDPFA': {
+                'CC_residual_temperature_correction_factor_b',
+                'CC_residual_temperature_correction_factor_c',
+                'CC_residual_temperature_correction_factor_a',
+                'CC_residual_temperature_correction_factor_e',
+                'CC_oxygen_signal_slope',
+                'CC_frequency_offset',
+                'CC_voltage_offset',
+            },
+            'DOSTAD': {
+                'CC_ct_depth'
+            }
+        }
+
         klass_dict = {}
         for filepath in self.walk_cal_files():
             inst_klass = os.path.basename(os.path.dirname(filepath))
@@ -144,7 +162,8 @@ class CalibrationFilesUnitTest(AssetManagementUnitTest):
                 if name_set is None:
                     name_set = set(names)
                 else:
-                    diff = name_set.difference(names)
+                    diff = name_set.symmetric_difference(names)
+                    diff = diff.difference(allowed_diff.get(klass, set()))
                     if diff:
                         errors.append('Inconsistent set of parameters for instrument class %s %s %s' %
                                       (klass, diff, filepath))

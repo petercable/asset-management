@@ -91,6 +91,10 @@ class DeploymentFilesUnitTest(AssetManagementUnitTest):
         # check types for Platform and Sensor
         for index, record in deployment.iterrows():
             try:
+                # rows which begin with # are considered comments
+                if record.CUID_Deploy.startswith('#'):
+                    continue
+
                 # make sure all required fields are filled out
                 set_fields = {name for name in record.index if getattr(record, name)}
                 missing = self.required_ids - set_fields
