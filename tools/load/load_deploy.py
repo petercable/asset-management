@@ -2,6 +2,7 @@
 import os
 import sys
 import pandas as pd
+import numpy as np
 from dateutil import parser
 
 
@@ -28,6 +29,9 @@ for f in os.listdir(source_dir):
 
     df['startDateTime'] = start
     df['stopDateTime'] = stop
+
+    # drop lines beginning with #
+    df = df[np.logical_not(df.CUID_Deploy.str.startswith('#'))]
 
     sheetname = f.replace('.csv', '')
     writer = pd.ExcelWriter(os.path.join(dest_dir, sheetname + '.xlsx'),
