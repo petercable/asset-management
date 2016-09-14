@@ -327,7 +327,7 @@ def get_cals(deployment_dir, pat='*.xlsx'):
 
                     if not any(map(isnan, (name, value))):
                         if isinstance(value, basestring) and value.startswith('SheetRef'):
-                            value = get_sheetref(os.path.join(path, f), value.replace('SheetRef:', ''))
+                            value = get_sheetref(f, value.replace('SheetRef:', ''))
                         calibration = Calibration(name=name, value=value, notes=notes, deployment=deployment)
                         session.add(calibration)
                     session.flush()

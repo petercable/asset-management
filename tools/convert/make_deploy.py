@@ -135,8 +135,11 @@ def main():
                 (_id, refdes, dnum, mooring_uid, node_uid, sensor_uid,
                  serial, launch, recover, lat, lon, depth, cruise) = row
 
-                lat = round(float(lat), 5)
-                lon = round(float(lon), 5)
+                try:
+                    lat = round(float(lat), 5)
+                    lon = round(float(lon), 5)
+                except TypeError:
+                    print (lat, lon)
 
                 version = 1
                 orbit = None
