@@ -1,3 +1,0 @@
-serial,name,value,notes
-315,CC_conc_coef,"[0.0, 1.0]",new multipoint cal above; 1D array now OK.
-315,CC_csv,"[0.003311638, 0.0001417601, 2.394201e-06, 232.8911, -0.3917855, -57.11092, 4.54461]","Requires TEMPWAT, PRESWAT and PRACSAL from CE01ISSP-SP001-09-CTDPFJ000"

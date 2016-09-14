@@ -1,7 +1,0 @@
-CUID_Deploy,deployedBy,CUID_Recover,recoveredBy,Reference Designator,deploymentNumber,versionNumber,startDateTime,stopDateTime,mooring.uid,node.uid,sensor.uid,lat,lon,orbit,depth
-,,,,CP05MOAS-GL339-00-ENG000000,2,1,,,A00257,,OL000349,,,,
-,,,,CP05MOAS-GL339-01-ADCPAM000,2,1,,,A00257,,N00131,,,,
-,,,,CP05MOAS-GL339-02-FLORTM000,2,1,,,A00257,,N00132,,,,
-,,,,CP05MOAS-GL339-03-CTDGVM000,2,1,,,A00257,,N00133,,,,
-,,,,CP05MOAS-GL339-04-DOSTAM000,2,1,,,A00257,,N00134,,,,
-,,,,CP05MOAS-GL339-05-PARADM000,2,1,,,A00257,,N00135,,,,

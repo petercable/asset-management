@@ -1,4 +1,3 @@
-import csv
 import logging
 from collections import Counter
 
@@ -20,10 +19,3 @@ class BulkLoadUnitTest(AssetManagementUnitTest):
         if dupes:
             log.error('Found duplicate keys in bulk load: %r', dupes)
             assert False
-
-    def test_col_count(self):
-        with open(self.BULK_FILE) as fh:
-            reader = csv.reader(fh)
-            header = next(reader)
-            for row in reader:
-                self.assertEqual(len(header), len(row))
