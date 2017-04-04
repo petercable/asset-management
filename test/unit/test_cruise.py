@@ -22,4 +22,4 @@ class CruiseFileUnitTest(AssetManagementUnitTest):
     def test_duplicates(self):
         counter = Counter(self.cruise_data.CUID)
         duplicates = {k for k in counter if counter[k] > 1}
-        self.assertEqual(duplicates, {}, msg='Found one or more duplicate cruise IDs: %r' % duplicates)
+        self.assertEqual(duplicates, set(), msg='Found one or more duplicate cruise IDs: %r' % duplicates)
